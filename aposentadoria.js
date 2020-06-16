@@ -1,21 +1,23 @@
 const name = "Silvana";
 const sexo = "F";
-const idade = 48;
-const contribuicao = 23;
+const idade = 58;
+const contribuicao = 30;
 
 const tempoT = (idade + contribuicao)
 
+const aposentaM = (tempoT >= 95 && sexo == "M" && contribuicao > 34)
+const aposentaF = (tempoT >= 85 && sexo == "F" && contribuicao > 29)
+
+
+//
 let message = ""
 
-if (sexo == "M") {
-    if (tempoT >= 95) {
-        message = `${name}, você pode se aposentar`
-    } else {(tempoT < 95 && sexo =="M") || (tempoT <85 && sexo == "F")
-    message = `${name}, você não pode se aposentar`
-    }
-  } else {(tempoT >=85)
-            message = `${name}, você pode se aposentar`
-    
-  }
-  console.log (tempoT)
+if (aposentaM == true || aposentaF == true){
+    message = `${name} voce pode se aposentar`
+}
+ else (
+    message = `${name} voce não pode se aposentar`
+ )
+  
+console.log (tempoT)
 console.log(message)
