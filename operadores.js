@@ -7,6 +7,6 @@ if (idade >= 18){
 else{ if (idade == 17){console.log("volte com 18 anos")
 }   
             else(idade <= 16)
-            console.log("entrada proibida")
+               console.log("entrada proibida")
             
 }
