@@ -1,27 +1,70 @@
-const aluno01 = {
+const alunosDaTurmaA = [
+    {
     nome: "Vitor",
     nota: 9.8
-}
-
-const aluno02 = {
+},
+ {
     nome: "Mayk",
-    nota: 10}
+    nota: 10
+}
+    ,
 
-const aluno03 = {
+ {
     nome: "Diego",
     nota: 2
-}
+},
 
+]
+
+const alunosDaTurmaB = [
+
+    {
+    nome: "Fabio",
+    nota: 8
+},
+ {
+    nome: "Cleiton",
+    nota: 3
+ },
+
+ {
+    nome: "Felipe",
+    nota: 2
+ },
+ {
+     nome: "novo aluno",
+     nota: 8
+ }
+
+
+
+]
+
+function calculaMedia(alunos) {
+    let soma = 0
+    for (let i = 0; i < alunos.length; i++){
+        soma = soma + alunos[i].nota 
+    }
+    const media = soma / alunos.length
+    return media  
+}
 
  
-const media= (aluno01.nota + aluno02.nota + aluno03.nota) / 3
+const media1 = calculaMedia(alunosDaTurmaA)
+const media2 = calculaMedia(alunosDaTurmaB)
+
+
+function enviaMsg(media, turma) {
 
 if (media >= 5) {
-    console.log(`A media foi de ${media}. Parabens`)
-}
+    console.log(`A media da ${turma} foi de ${media}. Parabens`)
+    }
 
 else {
-    console.log('media menor que 5')
+    console.log(`media da ${turma} menor que 5`)
+    }
 }
 
-console.log(media)
+
+enviaMsg(media1, 'turma A') 
+enviaMsg(media2, 'turma B')
