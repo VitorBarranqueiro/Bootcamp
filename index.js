@@ -39,7 +39,7 @@ const ClassB = [
 ]
 
 function averageCalc(students) {
-    
+
     let sum = 0
 
     for (let i = 0; i < students.length; i++) {
@@ -49,15 +49,28 @@ function averageCalc(students) {
     return average
 }
 
+function flunkedStudents(student) {
 
-const average1 = averageCalc(ClassA)
-const average2 = averageCalc(ClassB)
+    student.flunkedStudent = false;
 
+    if (student.grade < 5) {
+        student.flunkedStudent = true;
+
+    }
+}
+
+function flunkedAlert(student) {
+
+    if (student.flunkedStudent) {
+        console.log(`student ${student.name} is flunked `)
+    }
+
+}
 
 function sendMsg(average, Class) {
 
     if (average >= 5) {
-        console.log(`The ${Class} average was ${average}. congratulations`)
+        console.log(`The ${Class} average was ${average.toFixed(2)}. congratulations`)
     }
 
     else {
@@ -65,35 +78,19 @@ function sendMsg(average, Class) {
     }
 }
 
+function studentflkd(students) {
+
+    for (let student of students) {
+        flunkedStudents(student)
+        flunkedAlert(student)
+    }
+}
+
+const average1 = averageCalc(ClassA)
+const average2 = averageCalc(ClassB)
 
 sendMsg(average1, 'Class A')
 sendMsg(average2, 'Class B')
 
-function failedStudents(student) {
-
-    student.failedStudent = false;
-
-    if (student.grade < 5) {
-        student.failedStudent = true;
-
-    }
-}
-
-function failAlert(student) {
-
-    if (student.failedStudent) {
-        console.log(`student ${student.name} is failing `)
-    }
-
-}
-
-function studentrep(students) {
-
-    for (let student of students) {
-        failedStudents(student)
-        failAlert(student)
-    }
-}
-
-studentrep(ClassA)
-studentrep(ClassB)
+studentflkd(ClassA)
+studentflkd(ClassB)
