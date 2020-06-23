@@ -1,97 +1,99 @@
-const alunosDaTurmaA = [
+const ClassA = [
     {
-    nome: "Vitor",
-    nota: 9.8
-},
- {
-    nome: "Mayk",
-    nota: 10
-}
+        name: "Vitor",
+        grade: 9.8
+    },
+    {
+        name: "Mayk",
+        grade: 10
+    }
     ,
 
- {
-    nome: "Diego",
-    nota: 2
-},
+    {
+        name: "Diego",
+        grade: 2
+    },
 
 ]
 
-const alunosDaTurmaB = [
+const ClassB = [
 
     {
-    nome: "Fabio",
-    nota: 8
-},
- {
-    nome: "Cleiton",
-    nota: 3
- },
+        name: "Fabio",
+        grade: 8
+    },
+    {
+        name: "Cleiton",
+        grade: 3
+    },
 
- {
-    nome: "Felipe",
-    nota: 2
- },
- {
-     nome: "novo aluno",
-     nota: 8
- }
+    {
+        name: "Felipe",
+        grade: 2
+    },
+    {
+        name: "Zé",
+        grade: 8
+    }
 
 ]
 
-function calculaMedia(alunos) {
-    let soma = 0
-    for (let i = 0; i < alunos.length; i++){
-        soma = soma + alunos[i].nota 
+function averageCalc(students) {
+    
+    let sum = 0
+
+    for (let i = 0; i < students.length; i++) {
+        sum = sum + students[i].grade
     }
-    const media = soma / alunos.length
-    return media  
-}
-
- 
-const media1 = calculaMedia(alunosDaTurmaA)
-const media2 = calculaMedia(alunosDaTurmaB)
-
-
-function enviaMsg(media, turma) {
-
-if (media >= 5) {
-    console.log(`A media da ${turma} foi de ${media}. Parabens`)
-    }
-
-else {
-    console.log(`media da ${turma} menor que 5`)
-    }
+    const average = sum / students.length
+    return average
 }
 
 
-enviaMsg(media1, 'turma A') 
-enviaMsg(media2, 'turma B')
+const average1 = averageCalc(ClassA)
+const average2 = averageCalc(ClassB)
 
-function reprovados (aluno){
-            aluno.reprovado = false;
-        if (aluno.nota < 5) {
-            aluno.reprovado = true;
-            
-        } 
-        //else {
-            
-        //}
+
+function sendMsg(average, Class) {
+
+    if (average >= 5) {
+        console.log(`The ${Class} average was ${average}. congratulations`)
     }
 
-
-function comunicarep (aluno){
-    if (aluno.reprovado) {
- console.log(`Aluno ${aluno.nome} esta reprovado`)       
-    } 
-
-}
-
-function alunorep(alunos){
-    for(let aluno of alunos){
-        reprovados(aluno)
-        comunicarep(aluno)
+    else {
+        console.log(`The ${Class} average was less than 5. Need more study`)
     }
 }
 
-alunorep(alunosDaTurmaA)
-alunorep(alunosDaTurmaB)
+
+sendMsg(average1, 'Class A')
+sendMsg(average2, 'Class B')
+
+function failedStudents(student) {
+
+    student.failedStudent = false;
+
+    if (student.grade < 5) {
+        student.failedStudent = true;
+
+    }
+}
+
+function failAlert(student) {
+
+    if (student.failedStudent) {
+        console.log(`student ${student.name} is failing `)
+    }
+
+}
+
+function studentrep(students) {
+
+    for (let student of students) {
+        failedStudents(student)
+        failAlert(student)
+    }
+}
+
+studentrep(ClassA)
+studentrep(ClassB)
