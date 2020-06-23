@@ -36,8 +36,6 @@ const alunosDaTurmaB = [
      nota: 8
  }
 
-
-
 ]
 
 function calculaMedia(alunos) {
@@ -68,3 +66,32 @@ else {
 
 enviaMsg(media1, 'turma A') 
 enviaMsg(media2, 'turma B')
+
+function reprovados (aluno){
+            aluno.reprovado = false;
+        if (aluno.nota < 5) {
+            aluno.reprovado = true;
+            
+        } 
+        //else {
+            
+        //}
+    }
+
+
+function comunicarep (aluno){
+    if (aluno.reprovado) {
+ console.log(`Aluno ${aluno.nome} esta reprovado`)       
+    } 
+
+}
+
+function alunorep(alunos){
+    for(let aluno of alunos){
+        reprovados(aluno)
+        comunicarep(aluno)
+    }
+}
+
+alunorep(alunosDaTurmaA)
+alunorep(alunosDaTurmaB)
