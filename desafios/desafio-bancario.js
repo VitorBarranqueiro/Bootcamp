@@ -3,61 +3,61 @@ const user = {
     transactions: [],
     balance: 0
 }
- 
+
 //Criar transação
-function createTransaction(transaction){
+function createTransaction(transaction) {
     user.transactions.push(transaction)
 
     if (transaction.type === 'credit') {
         user.balance = user.balance + transaction.value
-        
-    } 
+
+    }
     else {
         user.balance = user.balance - transaction.value
-      
+
     }
 }
 
 //gerar relatorios
-function getHigherTransactionByType(type){
-    
+function getHigherTransactionByType(type) {
+
     let higherTransaction
     let higherValue = 0
 
-    for(let transaction of user.transactions){
+    for (let transaction of user.transactions) {
         if (transaction.type == type && transaction.value > higherValue) {
             higherValue = transaction.value
             higherTransaction = transaction
-            
+
         }
     }
-return higherTransaction
+    return higherTransaction
 }
 
-function getAverageTransactionValue(){
-    
-    let sum = 0 
+function getAverageTransactionValue() {
 
-    for(let transaction of user.transactions){
+    let sum = 0
+
+    for (let transaction of user.transactions) {
         sum += transaction.value
     }
     return sum / user.transactions.length
 
 }
 
-function getTransactionsCount(){
-    
-    let count={
+function getTransactionsCount() {
+
+    let count = {
         credit: 0,
         debit: 0,
     }
-for(let transaction of user.transactions){
-    if (transaction.type ==='credit') 
-        count.credit++
+    for (let transaction of user.transactions) {
+        if (transaction.type === 'credit')
+            count.credit++
 
-    
-    else         count.debit ++
-        
+
+        else count.debit++
+
     }
     return count
 }
